@@ -16,6 +16,19 @@ export async function hashPassword(password: string) {
   }
 }
 
+export async function validatePassword(hash: string, password: string) {
+  let result = false;
+
+  try {
+    result = await bcrypt.compare(password, hash);
+  } catch (error) {
+    console.log(error);
+    throw "Error interno";
+  }
+
+  return result;
+}
+
 export function generateJWT(user: User) {
   // Define los datos que quieres incluir en el token
   const datosToken = {
