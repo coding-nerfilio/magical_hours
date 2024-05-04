@@ -2,9 +2,28 @@ import { User } from "@src/entities/User";
 import Express from "express";
 import { appDataSource } from "@src/index";
 import { DefaultResponses } from "@src/responses";
-import { generateJWT, hashPassword } from "./utils";
+import { generateJWT, hashPassword } from "@src/services/Auth/utils";
+import { Logic } from "@src/services/Auth/logic";
+import { Error } from "@src/errors";
 
 const Router = Express.Router();
+
+Router.post(
+  "/magical_hours/api/v1/auth/login",
+  async (
+    req: Express.Request<{}, { username: string; password: string }>,
+    res: any
+  ) => {
+    const { username, password } = req.body;
+    Logic.Login(username, password)
+      .then((value) => {
+        res.send(DefaultResponses.OkResponse(value, "Login exitoso"));
+      })
+      .catch((err: Error) => {
+        res.send(DefaultResponses.ErrorResponse(err.status, err.message));
+      });
+  }
+);
 
 Router.post(
   "/magical_hours/api/v1/auth/register",
