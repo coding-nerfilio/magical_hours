@@ -1,4 +1,4 @@
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import ControlledForm from "../components/ControlledForm";
 import Auth from "../services/Auth";
 import { Box, Container, Typography } from "@mui/material";
@@ -52,6 +52,15 @@ const RegisterPage = () => {
           onSubmit={onSubmit}
           submitButton={{ label: "Sign up" }}
         />
+        <Typography
+          paddingTop="30px"
+          textAlign={"center"}
+          variant="h6"
+          component={Link}
+          to="/login"
+        >
+          ¿Ya posees una cuenta? Inicia sesión
+        </Typography>
       </Container>
     </Box>
   );
