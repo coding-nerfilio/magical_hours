@@ -29,8 +29,8 @@ const useLogic = () => {
             history.push("/app/home");
             window.location.reload();
           },
-          (status) => {
-            alert(status);
+          (_, message) => {
+            alert(message);
           }
         )
       )

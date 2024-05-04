@@ -18,12 +18,12 @@ type ApiResponse<t> = {
 export const ResponseHandler = <t>(
   response: ApiResponse<t>,
   okCallback: (message: string, data: t) => any,
-  errorCallback: (status: Status) => any
+  errorCallback: (status: Status, message: string) => any
 ) => {
   if (response.status === Status.OK) {
     okCallback(response.message, response.data);
   } else {
-    errorCallback(response.status);
+    errorCallback(response.status, response.message);
   }
 };
 
