@@ -13,6 +13,9 @@ export const initializeDatabase = async () => {
     poolSize: 10,
     synchronize: true,
     entities: [User, HourEntry],
+    logging: new Boolean(
+      process.env.MAGICAL_HOURS_DATABASE_LOG
+    ).valueOf() as any,
   });
 
   await datasource.initialize();

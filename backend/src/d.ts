@@ -10,6 +10,7 @@ declare namespace NodeJS {
     MAGICAL_HOURS_TYPEORM_PASSWORD: any;
     MAGICAL_HOURS_API: any;
     MAGICAL_HOURS_PORT: any;
+    MAGICAL_HOURS_DATABASE_LOG: any;
   }
 }
 
