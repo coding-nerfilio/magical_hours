@@ -7,6 +7,7 @@ import {
 
 import RegisterPage from "./Register.page";
 import AppRouter from "./app";
+import LoginPage from "./Login.page";
 
 const MainRouter = () => {
   return (
@@ -14,6 +15,7 @@ const MainRouter = () => {
       <Switch>
         <Route path="/" exact render={() => <Redirect to="/register" />} />
         <Route path="/register" component={RegisterPage} />
+        <Route path="/login" component={LoginPage} />
         <Route path="/app/*" component={AppRouter} />
       </Switch>
     </Router>
