@@ -69,6 +69,11 @@ export const useApi = {
         { user: User; token: string },
         { username: string; password: string; rePassword: string }
       >("v1/auth/register", "POST", false),
+    login: () =>
+      useRawApi<
+        { user: User; token: string },
+        { username: string; password: string }
+      >("v1/auth/login", "POST", false),
   },
   Social: {
     getFriends: () =>
