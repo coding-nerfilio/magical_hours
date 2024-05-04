@@ -15,6 +15,18 @@ type ApiResponse<t> = {
   data: t;
 };
 
+export const ResponseHandler = <t>(
+  response: ApiResponse<t>,
+  okCallback: (message: string, data: t) => any,
+  errorCallback: (status: Status, message: string) => any
+) => {
+  if (response.status === Status.OK) {
+    okCallback(response.message, response.data);
+  } else {
+    errorCallback(response.status, response.message);
+  }
+};
+
 const useRawApi = <res, body = void, query = void>(
   url: string,
   method: "GET" | "POST",
@@ -24,7 +36,10 @@ const useRawApi = <res, body = void, query = void>(
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState<null | string>(null);
 
-  const execute = async (body: body, query: query) => {
+  const execute = async (
+    body: body,
+    query: query
+  ): Promise<ApiResponse<res>> => {
     setIsLoading(true);
 
     let finalUrl = import.meta.env.VITE_API_URL + url;
@@ -55,7 +70,7 @@ const useRawApi = <res, body = void, query = void>(
       setIsLoading(false);
       console.log(error);
       setErrorMessage("error");
-      return null;
+      throw error;
     }
   };
 
@@ -69,6 +84,11 @@ export const useApi = {
         { user: User; token: string },
         { username: string; password: string; rePassword: string }
       >("v1/auth/register", "POST", false),
+    login: () =>
+      useRawApi<
+        { user: User; token: string },
+        { username: string; password: string }
+      >("v1/auth/login", "POST", false),
   },
   Social: {
     getFriends: () =>
