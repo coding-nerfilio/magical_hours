@@ -12,19 +12,21 @@ import { useApi } from "../../hooks/useApi";
 import useTime from "../../hooks/useTime";
 import useCooldown from "../../hooks/useCooldown";
 import { useEffect } from "preact/hooks";
+import { useTranslation } from "react-i18next";
 
 interface SubmitButtonProps {
   onClick: any;
   isLoading: boolean;
   buttonStyles?: ButtonProps;
   circularProgressStyles?: CircularProgressProps;
+  buttonlabel: string;
 }
 const SubmitButton = (props: SubmitButtonProps) =>
   props.isLoading ? (
     <CircularProgress {...props.circularProgressStyles} />
   ) : (
     <Button {...props.buttonStyles} onClick={props.onClick}>
-      Send hour
+      {props.buttonlabel}
     </Button>
   );
 
@@ -32,6 +34,8 @@ const HomePage = () => {
   const submitHourApi = useApi.Game.submitHour();
   const time = useTime();
   const cooldown = useCooldown();
+
+  const { t } = useTranslation();
 
   const onClick = () => {
     submitHourApi.execute({ timezone: new Date().getTimezoneOffset() / -60 });
@@ -49,6 +53,7 @@ const HomePage = () => {
         </Typography>
         <Box textAlign={"center"} mt="5vh">
           <SubmitButton
+            buttonlabel={t("send_hour")}
             buttonStyles={{
               disabled: cooldown.cooldown != null && cooldown.cooldown! > 0,
             }}
@@ -56,7 +61,9 @@ const HomePage = () => {
             isLoading={submitHourApi.isLoading}
           />
           {cooldown.cooldown != null && cooldown.cooldown! > 0 && (
-            <Typography>Wait {cooldown.cooldown}s</Typography>
+            <Typography>
+              {t("wait")} {cooldown.cooldown}s
+            </Typography>
           )}
         </Box>
       </Container>

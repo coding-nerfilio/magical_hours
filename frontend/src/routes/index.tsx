@@ -8,17 +8,20 @@ import {
 import RegisterPage from "./Register.page";
 import AppRouter from "./app";
 import LoginPage from "./Login.page";
+import { Suspense } from "preact/compat";
 
 const MainRouter = () => {
   return (
-    <Router>
-      <Switch>
-        <Route path="/" exact render={() => <Redirect to="/register" />} />
-        <Route path="/register" component={RegisterPage} />
-        <Route path="/login" component={LoginPage} />
-        <Route path="/app/*" component={AppRouter} />
-      </Switch>
-    </Router>
+    <Suspense fallback="loading">
+      <Router>
+        <Switch>
+          <Route path="/" exact render={() => <Redirect to="/register" />} />
+          <Route path="/register" component={RegisterPage} />
+          <Route path="/login" component={LoginPage} />
+          <Route path="/app/*" component={AppRouter} />
+        </Switch>
+      </Router>
+    </Suspense>
   );
 };
 
