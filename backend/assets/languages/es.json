@@ -1,0 +1,23 @@
+{
+    "title": "MagicalHours",
+    "error_empty_username":"El nombre de usuario no puede estar vacio",
+    "friends":"Amigos",
+    "social":"Social",
+    "no_friends":"Al parecer aun no tienes amigos...",
+    "username":"Nombre de usuario",
+    "add_friend":"Agregar amigo",
+    "login":"Inicio de sesión",
+    "do_login":"Iniciar sesión",
+    "do_register":"Registrarse",
+    "password":"Contraseña",
+    "repassword":"Reingresar contraseña",
+    "register_invitation":"¿Aun no posees una cuenta? Registrate",
+    "login_invitation":"¿Ya posees una cuenta? Inicia sesión",
+    "create_account":"Crear cuenta",
+    "fill_the_input_below":"Por favor, completa los datos a continuación.",
+    "ranking":"Clasificación",
+    "send_hour":"Enviar Hora",
+    "wait":"Espera",
+    "login_success":"Login exitoso",
+    "invalid_credentials":"Credenciales invalidas"
+}

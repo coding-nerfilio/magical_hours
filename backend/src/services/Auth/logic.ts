@@ -18,7 +18,7 @@ const Login = async (username: string, password: string) => {
     if (user === null) throw "";
   } catch (err) {
     console.log(err);
-    throw ErrorFactory(Status.INPUT_VALIDATION_ERROR, "Credenciales invalidas");
+    throw ErrorFactory(Status.INPUT_VALIDATION_ERROR, "invalid_credentials");
   }
 
   //Validate password
@@ -26,13 +26,13 @@ const Login = async (username: string, password: string) => {
   try {
     isValid = await validatePassword(user.password, password);
   } catch (err) {
-    throw ErrorFactory(Status.INPUT_VALIDATION_ERROR, "Credenciales invalidas");
+    throw ErrorFactory(Status.INPUT_VALIDATION_ERROR, "invalid_credentials");
   }
 
   if (isValid) {
     return { user, token: generateJWT(user) };
   } else {
-    throw ErrorFactory(Status.INPUT_VALIDATION_ERROR, "Credenciales invalidas");
+    throw ErrorFactory(Status.INPUT_VALIDATION_ERROR, "invalid_credentials");
   }
 };
 

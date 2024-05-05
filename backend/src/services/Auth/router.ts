@@ -17,7 +17,7 @@ Router.post(
     const { username, password } = req.body;
     Logic.Login(username, password)
       .then((value) => {
-        res.send(DefaultResponses.OkResponse(value, "Login exitoso"));
+        res.send(DefaultResponses.OkResponse(value, "login_success"));
       })
       .catch((err: Error) => {
         res.send(DefaultResponses.ErrorResponse(err.status, err.message));
