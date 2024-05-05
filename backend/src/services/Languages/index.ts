@@ -19,7 +19,7 @@ Router.get("/magical_hours/api/v1/languages/:language", async (req, res) => {
       const data = fs.readFileSync(
         path.resolve(
           __dirname +
-            `\\..\\..\\..\\assets\\languages\\${(languageMap as any)[language]}`
+            `/../../../assets/languages/${(languageMap as any)[language]}`
         )
       );
       res.send(data);
