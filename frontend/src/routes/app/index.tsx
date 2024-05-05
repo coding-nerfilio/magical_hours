@@ -16,8 +16,10 @@ import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import { useState } from "preact/hooks";
 import RankingPage from "./Ranking.page";
 import FriendsPage from "./Friends.page";
+import { useTranslation } from "react-i18next";
 
 const AppRouter = () => {
+  const { t } = useTranslation();
   const location = useLocation();
   const [value, setValue] = useState(location.pathname);
   return (
@@ -41,21 +43,21 @@ const AppRouter = () => {
         <BottomNavigationAction
           component={Link}
           to="/app/ranking"
-          label="Ranking"
+          label={t("ranking")}
           value="/app/ranking"
           icon={<EmojiEventsIcon />}
         />
         <BottomNavigationAction
           component={Link}
           to="/app/home"
-          label="Magical Hours"
+          label={t("title")}
           value="/app/home"
           icon={<HistoryToggleOffIcon />}
         />
         <BottomNavigationAction
           component={Link}
           to="/app/friends"
-          label="Friends"
+          label={t("social")}
           value="/app/friends"
           icon={<GroupIcon />}
         />

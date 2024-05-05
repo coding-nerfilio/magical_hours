@@ -19,6 +19,7 @@ export let appDataSource: DataSource;
 app.use(json());
 app.use(cors());
 
+app.use(Services.Languages.Router);
 app.use(Services.Auth.Router);
 app.use(Services.Game.Router);
 app.use(Services.Social.Router);

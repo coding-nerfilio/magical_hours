@@ -4,8 +4,10 @@ import Auth from "../services/Auth";
 import { Box, Container, Typography } from "@mui/material";
 import redirectIfLogged from "../hocs/redirectIfLogged";
 import { Status, useApi } from "../hooks/useApi";
+import { useTranslation } from "react-i18next";
 
 const RegisterPage = () => {
+  const { t } = useTranslation();
   const history = useHistory();
   const registerApi = useApi.Auth.register();
 
@@ -36,21 +38,21 @@ const RegisterPage = () => {
   return (
     <Box height={"100vh"} width={"100vw"} paddingTop={"100px"}>
       <Container maxWidth="sm">
-        <Typography variant="h2">Magical Hours</Typography>
-        <Typography variant="h5">Create Account</Typography>
-        <Typography variant="h6">Please fill the input below</Typography>
+        <Typography variant="h2">{t("title")}</Typography>
+        <Typography variant="h5">{t("create_account")}</Typography>
+        <Typography variant="h6">{t("fill_the_input_below")}</Typography>
         <ControlledForm
           fields={[
-            { name: "username", type: "text", label: "Username" },
-            { name: "password", type: "password", label: "Password" },
+            { name: "username", type: "text", label: t("username") },
+            { name: "password", type: "password", label: t("password") },
             {
               name: "rePassword",
               type: "password",
-              label: "Re-enter password",
+              label: t("repassword"),
             },
           ]}
           onSubmit={onSubmit}
-          submitButton={{ label: "Sign up" }}
+          submitButton={{ label: t("do_register") }}
         />
         <Typography
           paddingTop="30px"
@@ -59,7 +61,7 @@ const RegisterPage = () => {
           component={Link}
           to="/login"
         >
-          ¿Ya posees una cuenta? Inicia sesión
+          {t("login_invitation")}
         </Typography>
       </Container>
     </Box>

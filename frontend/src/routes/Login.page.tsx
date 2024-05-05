@@ -4,11 +4,7 @@ import { ResponseHandler, useApi } from "../hooks/useApi";
 import Auth from "../services/Auth";
 import { Link, useHistory } from "react-router-dom";
 import redirectIfLogged from "../hocs/redirectIfLogged";
-
-const formFields = [
-  { name: "username", type: "text", label: "Username" },
-  { name: "password", type: "password", label: "Password" },
-];
+import { useTranslation } from "react-i18next";
 
 const useLogic = () => {
   const history = useHistory();
@@ -42,17 +38,23 @@ const useLogic = () => {
 };
 
 const LoginPage = () => {
+  const { t } = useTranslation();
+  const formFields = [
+    { name: "username", type: "text", label: t("username") },
+    { name: "password", type: "password", label: t("password") },
+  ];
+
   const logic = useLogic();
 
   return (
     <Box height={"100vh"} width={"100vw"} paddingTop={"100px"}>
       <Container maxWidth="sm">
-        <Typography variant="h2">Magical Hours</Typography>
-        <Typography variant="h5">Inicio de sesión</Typography>
+        <Typography variant="h2">{t("title")}</Typography>
+        <Typography variant="h5">{t("login")}</Typography>
         <ControlledForm
           fields={formFields}
           onSubmit={logic.onSubmitForm}
-          submitButton={{ label: "Iniciar sesión" }}
+          submitButton={{ label: t("do_login") }}
         />
         <Typography
           paddingTop="30px"
@@ -61,7 +63,7 @@ const LoginPage = () => {
           component={Link}
           to="/register"
         >
-          ¿Aun no posees una cuenta?
+          {t("register_invitation")}
         </Typography>
       </Container>
     </Box>
