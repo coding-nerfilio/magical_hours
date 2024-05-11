@@ -3,7 +3,8 @@ import AuthService from "../Auth";
 import { User } from "@src/entities/User";
 import { appDataSource } from "@src/index";
 import { DefaultResponses } from "@src/responses";
-import { addFriend } from "@src/services/Social/logic";
+import { addFriend, getMinimalProfile } from "@src/services/Social/logic";
+import { Error } from "@src/errors";
 
 const Router = Express.Router();
 
@@ -45,6 +46,25 @@ Router.use(AuthService.Middleware.validateJWT).post(
     let result = await addFriend(user!, username);
 
     DefaultResponses.FoundData(res, { friends: result });
+  }
+);
+
+Router.use(AuthService.Middleware.validateJWT).get(
+  "/magical_hours/api/v1/social/profile/minimal/:username",
+  async (req, res) => {
+    const { username } = req.params;
+
+    try {
+      res.send(
+        DefaultResponses.OkResponse(
+          await getMinimalProfile(username),
+          "profile_found"
+        )
+      );
+    } catch (error) {
+      let e = error as Error;
+      res.send(DefaultResponses.ErrorResponse(e.status, e.message));
+    }
   }
 );
 

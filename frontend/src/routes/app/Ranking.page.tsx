@@ -3,6 +3,7 @@ import redirectIfNotLogged from "../../hocs/redirectIfNotLogged";
 import { useApi } from "../../hooks/useApi";
 import { useEffect } from "preact/hooks";
 import { useTranslation } from "react-i18next";
+import UserChip from "../../components/UserChip";
 
 const RankingPage = () => {
   const { t } = useTranslation();
@@ -12,20 +13,25 @@ const RankingPage = () => {
   }, []);
 
   return (
-    <Box height={"90vh"}>
+    <Box height={"80vh"}>
       <Container maxWidth="sm">
         <Box textAlign={"center"}>
-          <Typography variant="h4" pt="10vh">
-            {t("ranking")}
-          </Typography>
-          <Box mt="50px">
+          <Box>
             {rankingApi.isLoading || rankingApi.response === null ? (
               <CircularProgress />
             ) : (
               rankingApi.response.data.ranking.entries.map((entry, idx) => (
-                <div key={idx}>
-                  {entry.user.username} - {entry.points}
-                </div>
+                <UserChip key={idx} username={entry.user.username}>
+                  <Box
+                    sx={{
+                      bgcolor: "#e4e4e4",
+                      p: "20px",
+                      mb: "3px",
+                    }}
+                  >
+                    {entry.user.username} - {entry.points}
+                  </Box>
+                </UserChip>
               ))
             )}
           </Box>

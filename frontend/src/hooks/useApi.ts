@@ -1,5 +1,5 @@
 import { useState } from "preact/hooks";
-import { Ranking, User } from "../types";
+import { Profile, Ranking, User } from "../types";
 import Auth from "../services/Auth";
 
 export enum Status {
@@ -97,6 +97,12 @@ export const useApi = {
       useRawApi<{ friends: User[] }, { username: string }>(
         "v1/social/addFriend",
         "POST",
+        true
+      ),
+    getMinimalProfile: () =>
+      useRawApi<Profile, undefined, { username: string }>(
+        "v1/social/profile/minimal/:username",
+        "GET",
         true
       ),
   },

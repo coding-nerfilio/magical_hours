@@ -16,6 +16,12 @@ const getAuthToken = () => {
   return atob(localStorage.getItem("authToken")!);
 };
 
+const logout = () => {
+  localStorage.removeItem("authToken");
+  localStorage.removeItem("userData");
+  localStorage.removeItem("api-cd");
+};
+
 const isLogged = () => {
   return localStorage.getItem("authToken") !== null;
 };
@@ -25,6 +31,7 @@ const Auth = {
   loadUserData,
   setAuthToken,
   getAuthToken,
+  logout,
   isLogged,
 };
 
