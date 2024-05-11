@@ -33,13 +33,9 @@ const FriendsPage = () => {
   };
 
   return (
-    <Box height={"90vh"} overflow={"auto"}>
+    <Box height={"80vh"} overflow={"auto"}>
       <Container maxWidth="sm">
         <Box textAlign={"center"}>
-          <Typography variant="h4" pt="10vh">
-            {t("friends")}
-          </Typography>
-
           <Box mt="50px">
             {getFriendsApi.isLoading || getFriendsApi.response === null ? (
               <CircularProgress />
