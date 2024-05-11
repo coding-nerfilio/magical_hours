@@ -19,5 +19,12 @@
     "send_hour":"Enviar Hora",
     "wait":"Espera",
     "login_success":"Login exitoso",
-    "invalid_credentials":"Credenciales invalidas"
+    "invalid_credentials":"Credenciales invalidas",
+    "my_account":"Mi cuenta",
+    "profile":"Perfil",
+    "settings":"Ajustes",
+    "logout":"Cerrar sesión",
+    "my":"Mi",
+    "profile_not_found":"No se ha encontrado el usuario",
+    "profile_found":"Se ha encontrado el usuario"
 }
