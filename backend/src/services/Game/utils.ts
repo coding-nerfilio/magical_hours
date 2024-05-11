@@ -18,5 +18,5 @@ export function isTriangle(timeString: string) {
 
   // Verificar si hay tres dígitos distintos
   const uniqueDigits = new Set(digits);
-  return uniqueDigits.size === 3;
+  return uniqueDigits.size === 1;
 }
