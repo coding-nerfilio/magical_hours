@@ -13,6 +13,7 @@ import useTime from "../../hooks/useTime";
 import useCooldown from "../../hooks/useCooldown";
 import { useEffect } from "preact/hooks";
 import { useTranslation } from "react-i18next";
+import Header from "../../components/Header";
 
 interface SubmitButtonProps {
   onClick: any;
@@ -46,7 +47,7 @@ const HomePage = () => {
     if (submitHourApi.response !== null) alert(submitHourApi.response.message);
   }, [submitHourApi.response]);
   return (
-    <Box height={"90vh"} width={"100vw"}>
+    <Box height={"80vh"} width={"100vw"}>
       <Container fixed maxWidth="sm">
         <Typography variant="h2" textAlign={"center"} pt={"10vh"}>
           {time.value}
