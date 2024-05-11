@@ -9,7 +9,7 @@ import ProfileCard from "./ProfileCard";
 
 const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
   <Tooltip {...props} classes={{ popper: className }} />
-))(({ theme }) => ({
+))(({}) => ({
   [`& .${tooltipClasses.popper}`]: {
     backgroundColor: "#ffffff",
     color: "rgba(0, 0, 0, 0.87)",
