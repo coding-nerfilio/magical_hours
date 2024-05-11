@@ -6,6 +6,7 @@ export enum HOUR_TYPE {
   MIRROR = "MIRROR",
   TRIANGLE = "TRIANGLE",
   REVERSE = "REVERSE",
+  CAPICUA = "CAPICUA",
 }
 
 @Entity()
