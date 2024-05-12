@@ -5,6 +5,7 @@ import {
   CircularProgress,
   CircularProgressProps,
   Container,
+  Stack,
   Typography,
 } from "@mui/material";
 import redirectIfNotLogged from "../../hocs/redirectIfNotLogged";
@@ -14,6 +15,7 @@ import useCooldown from "../../hooks/useCooldown";
 import { useEffect } from "preact/hooks";
 import { useTranslation } from "react-i18next";
 import { ButtonModal } from "../../components/generic/ButtonModal";
+import { HourInfoButton } from "../../components/HoursInfoButton";
 
 interface SubmitButtonProps {
   onClick: any;
@@ -49,10 +51,13 @@ const HomePage = () => {
   return (
     <Box height={"80vh"} width={"100vw"}>
       <Container fixed maxWidth="sm">
-        <Typography variant="h2" textAlign={"center"} pt={"10vh"}>
-          {time.value}
-        </Typography>
-        <ButtonModal label={"boton"}>Hola</ButtonModal>
+        <Stack alignItems={"center"}>
+          <Typography variant="h2" textAlign={"center"} pt={"10vh"}>
+            {time.value}
+          </Typography>
+          <HourInfoButton />
+        </Stack>
+
         <Box textAlign={"center"} mt="5vh">
           <SubmitButton
             buttonlabel={t("send_hour")}

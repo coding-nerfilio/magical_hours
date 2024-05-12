@@ -26,5 +26,13 @@
     "logout":"Cerrar sesión",
     "my":"Mi",
     "profile_not_found":"No se ha encontrado el usuario",
-    "profile_found":"Se ha encontrado el usuario"
+    "profile_found":"Se ha encontrado el usuario",
+    "mirror_hour":"Hora espejo",
+    "triangle_hour":"Hora triangulo",
+    "reverse_hour":"Hora reversa",
+    "types_of_mh":"Tipos de horas magicas",
+    "mirror_hour_description":"Hora y minutos son iguales. EJ: 12:12",
+    "triangle_hour_description":"Los últimos 3 digitos son iguales. EJ: 03:33",
+    "reverse_hour_description":"La hora es el reverso de los minutos y viceversa. EJ:14:41",
+    "hours_description":"Esas son las horas mágicas basicas. Existen mas horas, será tu deber descubrirlas..."
 }
