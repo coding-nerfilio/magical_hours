@@ -1,5 +1,5 @@
 import { Link, useHistory } from "react-router-dom";
-import ControlledForm from "../components/ControlledForm";
+import ControlledForm from "../components/generic/ControlledForm";
 import Auth from "../services/Auth";
 import { Box, Container, Typography } from "@mui/material";
 import redirectIfLogged from "../hocs/redirectIfLogged";

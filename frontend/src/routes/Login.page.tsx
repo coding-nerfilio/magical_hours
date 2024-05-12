@@ -1,5 +1,5 @@
 import { Box, Container, Typography } from "@mui/material";
-import ControlledForm from "../components/ControlledForm";
+import ControlledForm from "../components/generic/ControlledForm";
 import { ResponseHandler, useApi } from "../hooks/useApi";
 import Auth from "../services/Auth";
 import { Link, useHistory } from "react-router-dom";

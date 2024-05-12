@@ -3,8 +3,8 @@ import { Profile as ProfileT } from "../types";
 import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 import HourglassEmptyIcon from "@mui/icons-material/HourglassEmpty";
 import ChangeHistoryIcon from "@mui/icons-material/ChangeHistory";
-import AvatarUsername from "./AvatarUsername";
-import StatisticsBadge from "./StatisticsBadge";
+import AvatarUsername from "./generic/AvatarUsername";
+import StatisticsBadge from "./generic/StatisticsBadge";
 
 interface ProfileProps {
   profile: ProfileT | null;

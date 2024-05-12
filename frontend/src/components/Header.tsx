@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import GoBack from "./GoBack";
+import GoBack from "./generic/GoBack";
 import AccountMenu from "./AccountMenu";
 
 interface HeaderProps {

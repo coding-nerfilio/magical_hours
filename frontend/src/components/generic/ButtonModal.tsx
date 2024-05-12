@@ -1,4 +1,5 @@
 import { Box, Button, ButtonProps, Dialog, DialogProps } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 import { useState } from "preact/hooks";
 
 interface ButtonModalProps {
@@ -31,7 +32,9 @@ export const ButtonModal = (props: ButtonModalProps) => {
           <Box
             sx={{ display: "flex", alignItems: "end", justifyContent: "end" }}
           >
-            <Button onClick={handleClose}>X</Button>
+            <Button onClick={handleClose}>
+              <CloseIcon />
+            </Button>
           </Box>
           <Box sx={{ height: "20vh", width: "20vw", ...props.dialogSx }}>
             {props.children}

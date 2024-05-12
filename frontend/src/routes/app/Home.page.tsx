@@ -13,7 +13,7 @@ import useTime from "../../hooks/useTime";
 import useCooldown from "../../hooks/useCooldown";
 import { useEffect } from "preact/hooks";
 import { useTranslation } from "react-i18next";
-import Header from "../../components/Header";
+import { ButtonModal } from "../../components/generic/ButtonModal";
 
 interface SubmitButtonProps {
   onClick: any;
@@ -52,6 +52,7 @@ const HomePage = () => {
         <Typography variant="h2" textAlign={"center"} pt={"10vh"}>
           {time.value}
         </Typography>
+        <ButtonModal label={"boton"}>Hola</ButtonModal>
         <Box textAlign={"center"} mt="5vh">
           <SubmitButton
             buttonlabel={t("send_hour")}

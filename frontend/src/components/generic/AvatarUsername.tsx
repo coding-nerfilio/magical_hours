@@ -1,5 +1,5 @@
 import { Avatar, Box, Skeleton, Typography } from "@mui/material";
-import { User } from "../types";
+import { User } from "../../types";
 
 interface AvatarUsernameProps {
   user: User | undefined;
