@@ -1,44 +1,26 @@
 import Express from "express";
-import moment from "moment-timezone";
-import { isMirror, isReverse, isTriangle } from "./utils";
-import { DefaultResponses } from "src/responses";
-import { appDataSource } from "@src/index";
-import { HOUR_TYPE, HourEntry } from "@src/entities/HourEntry";
 import AuthService from "@src/services/Auth";
+import { DefaultResponses } from "@src/responses";
+import { submitHour } from "./logic";
+import { Error } from "@src/errors";
 
 const Router = Express.Router();
 
 Router.use(AuthService.Middleware.validateJWT).post(
   "/magical_hours/api/v1/game/submitHour",
-  (req: Express.Request<{}, { timezone: number }>, res) => {
+  async (req: Express.Request, res) => {
     const { timezone } = req.body;
-    const currentTime = moment.utc();
-    const localizedTime = currentTime.utcOffset(timezone);
 
-    const hhmm = localizedTime.format("HH:mm");
-
-    const hourEntryRepository = appDataSource.getRepository(HourEntry);
-    let hourEntry = null;
-
-    if (isMirror(hhmm)) {
-      hourEntry = new HourEntry();
-      hourEntry.type = HOUR_TYPE.MIRROR;
-    } else if (isTriangle(hhmm)) {
-      hourEntry = new HourEntry();
-      hourEntry.type = HOUR_TYPE.TRIANGLE;
-    } else if (isReverse(hhmm)) {
-      hourEntry = new HourEntry();
-      hourEntry.type = HOUR_TYPE.REVERSE;
-    }
-
-    if (hourEntry !== null) {
-      hourEntry.user = (req as any).user;
-      hourEntry.hour = hhmm;
-      hourEntry.id = 0;
-      hourEntryRepository.save(hourEntry);
-      return DefaultResponses.FoundData<{}>(res, {});
-    } else {
-      return DefaultResponses.DataNotFound(res);
+    try {
+      res.send(
+        DefaultResponses.OkResponse(
+          await submitHour(timezone, (req as any).user),
+          "hour_success"
+        )
+      );
+    } catch (error) {
+      let e = error as Error;
+      res.send(DefaultResponses.ErrorResponse(e.status, e.message));
     }
   }
 );
