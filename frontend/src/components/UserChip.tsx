@@ -35,9 +35,11 @@ interface UserChipProps {
 const UserChip = (props: UserChipProps) => {
   return (
     <HtmlTooltip
-      sx={{ ...props.sx }}
+      sx={{ ...props.sx, userSelect: "none" }}
       title={<ProfileCard username={props.username} />}
       placement="bottom"
+      enterTouchDelay={100}
+      leaveTouchDelay={100}
     >
       {props.children}
     </HtmlTooltip>

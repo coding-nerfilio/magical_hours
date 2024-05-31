@@ -1,5 +1,5 @@
 import { useState } from "preact/hooks";
-import { Profile, Ranking, User } from "../types";
+import { HourEntry, Profile, Ranking, User } from "../types";
 import Auth from "../services/Auth";
 
 export enum Status {
@@ -112,6 +112,10 @@ export const useApi = {
   },
   Game: {
     submitHour: () =>
-      useRawApi<{}, { timezone: number }>("v1/game/submitHour", "POST", true),
+      useRawApi<HourEntry, { timezone: number }>(
+        "v1/game/submitHour",
+        "POST",
+        true
+      ),
   },
 };

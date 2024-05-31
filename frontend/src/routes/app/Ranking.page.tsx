@@ -27,6 +27,7 @@ const RankingPage = () => {
                       bgcolor: "#e4e4e4",
                       p: "20px",
                       mb: "3px",
+                      userSelect: "none",
                     }}
                   >
                     {entry.user.username} - {entry.points}

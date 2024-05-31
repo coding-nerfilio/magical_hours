@@ -1,37 +1,12 @@
-import {
-  Box,
-  Button,
-  ButtonProps,
-  CircularProgress,
-  CircularProgressProps,
-  Container,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { Box, Container, Stack, Typography } from "@mui/material";
 import redirectIfNotLogged from "../../hocs/redirectIfNotLogged";
 import { useApi } from "../../hooks/useApi";
 import useTime from "../../hooks/useTime";
 import useCooldown from "../../hooks/useCooldown";
 import { useEffect } from "preact/hooks";
 import { useTranslation } from "react-i18next";
-import { ButtonModal } from "../../components/generic/ButtonModal";
 import { HourInfoButton } from "../../components/HoursInfoButton";
-
-interface SubmitButtonProps {
-  onClick: any;
-  isLoading: boolean;
-  buttonStyles?: ButtonProps;
-  circularProgressStyles?: CircularProgressProps;
-  buttonlabel: string;
-}
-const SubmitButton = (props: SubmitButtonProps) =>
-  props.isLoading ? (
-    <CircularProgress {...props.circularProgressStyles} />
-  ) : (
-    <Button {...props.buttonStyles} onClick={props.onClick}>
-      {props.buttonlabel}
-    </Button>
-  );
+import { SubmitButton } from "../../components/SubmitButton";
 
 const HomePage = () => {
   const submitHourApi = useApi.Game.submitHour();
@@ -46,7 +21,8 @@ const HomePage = () => {
   };
 
   useEffect(() => {
-    if (submitHourApi.response !== null) alert(submitHourApi.response.message);
+    if (submitHourApi.response !== null)
+      alert(t(submitHourApi.response.message));
   }, [submitHourApi.response]);
   return (
     <Box height={"80vh"} width={"100vw"}>
