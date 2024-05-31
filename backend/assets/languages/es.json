@@ -34,5 +34,8 @@
     "mirror_hour_description":"Hora y minutos son iguales. EJ: 12:12",
     "triangle_hour_description":"Los últimos 3 digitos son iguales. EJ: 03:33",
     "reverse_hour_description":"La hora es el reverso de los minutos y viceversa. EJ:14:41",
-    "hours_description":"Esas son las horas mágicas basicas. Existen mas horas, será tu deber descubrirlas..."
+    "hours_description":"Esas son las horas mágicas basicas. Existen mas horas, será tu deber descubrirlas...",
+    "hour_failed":"La hora no es mágica :c",
+    "hour_success":"¡Has acertado una hora mágica!",
+    "server_error":"Error en el servidor"
 }
